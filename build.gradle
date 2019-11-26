@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.10'
+    }
+}
+
+allprojects {
+    group 'io.ibj.lwcxe'
+    version '1.0.0-SNAPSHOT'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'com.google.protobuf'
+    apply plugin: 'idea'
+
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://hub.spigotmc.org/nexus/content/repositories/snapshots"
+        }
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
+    }
+
+    dependencies {
+        testImplementation "org.junit.jupiter:junit-jupiter-api:5.4.2"
+        testImplementation "org.junit.jupiter:junit-jupiter-engine:5.4.2"
+        testImplementation "org.junit.jupiter:junit-jupiter-params:5.4.2"
+        testCompile "org.mockito:mockito-core:2.+"
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}

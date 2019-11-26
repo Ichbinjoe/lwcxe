@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package lwcxe.types;
+
+option java_package = "io.ibj.lwcxe.core.proto";
+
+message UUID {
+    fixed64 msb = 1;
+    fixed64 lsb = 2;
+}

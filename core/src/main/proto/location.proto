@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package lwcxe.location;
+
+option java_package = "io.ibj.lwcxe.core.proto";
+
+import "types.proto";
+
+message WorldRef {
+    oneof world_name_ref {
+        lwcxe.types.UUID uuid = 1;
+        string name = 2;
+    }
+}
+
+message BlockPoint3D {
+    sint32 x = 1;
+    sint32 y = 2;
+    sint32 z = 3;
+}
+
+message Point3D {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+}
+
+message BlockSize {
+    uint32 x = 1;
+    uint32 y = 2;
+    uint32 z = 3;
+}
+
+message BlockRegion3D {
+    BlockPoint3D origin = 1;
+    BlockSize size = 2;
+}
+
+message Region3D {
+    Point3D origin = 1;
+    Point3D size = 2;
+}
+
+message WorldBlockPoint3D {
+    WorldRef world = 1;
+    BlockPoint3D location = 2;
+}
+
+message WorldPoint3D {
+    WorldRef world = 1;
+    Point3D location = 2;
+}
+
+message WorldBlockRegion3D {
+    WorldRef world = 1;
+    BlockRegion3D region = 2;
+}
+
+message WorldRegion3D {
+    WorldRef world = 1;
+    Region3D region = 2;
+}
+
+
