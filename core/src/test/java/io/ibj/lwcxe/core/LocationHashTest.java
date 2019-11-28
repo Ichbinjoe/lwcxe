@@ -1,6 +1,7 @@
 package io.ibj.lwcxe.core;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -36,6 +37,7 @@ public class LocationHashTest {
         Assertions.assertTrue(LocationHash.hash(0, 21, x1, y1, z1) < LocationHash.hash(0, 21, x2, y2, z2));
     }
 
+    @Test
     void testScaling() {
         long last = Long.MAX_VALUE;
         for (long li = Integer.MIN_VALUE; li <= Integer.MAX_VALUE; li++) {
