@@ -2,4 +2,6 @@
 dependencies {
     compile "com.google.protobuf:protobuf-java:3.10.0"
     compile "com.google.protobuf:protobuf-java-util:3.10.0"
+
+    implementation "io.reactivex.rxjava3:rxjava:3.0.0-RC5"
 }
