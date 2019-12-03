@@ -5,7 +5,7 @@ package io.ibj.lwcxe.core;
  *
  * @param <PointType> Type of the point
  */
-public class Region<PointType extends Point> implements Pointed<PointType> {
+public class Region<PointType extends Point<PointType>> {
   private final PointType lower;
   private final PointType upper;
 
@@ -28,11 +28,8 @@ public class Region<PointType extends Point> implements Pointed<PointType> {
    *
    * @throws IllegalArgumentException if the arguments are not compatible with each other
    */
-  public static <PointType extends Point> Region<PointType> create(
+  public static <PointType extends Point<PointType>> Region<PointType> create(
       PointType lower, PointType upper) {
-    // check to be sure the points are of the same degree
-    if (lower.degree() != upper.degree()) throw new IllegalArgumentException("Mismatched degrees");
-
     // check to be sure lower is actually lower than upper
     if (lower.compareTo(upper) > 0) throw new IllegalArgumentException("lower > upper");
     return new Region<>(lower, upper);
@@ -73,10 +70,5 @@ public class Region<PointType extends Point> implements Pointed<PointType> {
     // if our lower is lower than their lower and our higher is higher than their higher, we can assert that we
     // contain them
     return this.lower.compareTo(r.lower()) <= 0 && this.upper.compareTo(r.upper()) >= 0;
-  }
-
-  @Override
-  public PointType point() {
-    return lower;
   }
 }
