@@ -14,7 +14,7 @@ public class LWCPlugin {
     }
 
     @Listener
-    public void onServerStart(GameStoppedServerEvent event) {
+    public void onServerStop(GameStoppedServerEvent event) {
         
     }
     
